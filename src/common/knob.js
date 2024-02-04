@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 class Knob extends React.Component {
   static propTypes = {
     value: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     onChangeEnd: PropTypes.func,
     min: PropTypes.number,
     max: PropTypes.number,

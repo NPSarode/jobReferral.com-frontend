@@ -52,7 +52,7 @@ const Profile = () => {
               <CardBody className="d-flex">
                 {
                   [{title:"FrontEnd", value:80},{title:"BackEnd", value:40},{title:"Database", value:20}].map((data, key) => {
-                    return <Col lg={4} className="p-0">
+                    return <Col lg={4} key={key} className="p-0">
                     <KnobChart
                       value={data.value}
                       fgColor="#404079"

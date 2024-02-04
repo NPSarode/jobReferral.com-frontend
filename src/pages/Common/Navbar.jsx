@@ -6,7 +6,7 @@ export const Navbar = ({setIsLogIn}) => {
   return (
     <div className="navbar shadow">
       <div className="text-center">
-        <img src={logo} class="rounded mx-5" alt="..." />
+        <img src={logo} className="rounded mx-5" alt="..." />
       </div>
       <ul className="text-white mb-0">
         <Link to={"/profile"}>
