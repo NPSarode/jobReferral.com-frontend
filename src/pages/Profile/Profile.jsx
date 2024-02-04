@@ -17,7 +17,7 @@ import Docker from "../../assets/icons/dockerIcon.svg";
 
 import KnobChart from "../../common/knob";
 import Divider from "../../common/Divider";
-
+ 
 const Profile = () => {
   return (
     <React.Fragment>

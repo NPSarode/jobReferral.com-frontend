@@ -1,6 +1,6 @@
 import React from "react";
 
-const Divider = ({width = "100%"}) => {
+const Divider = ({width = "100%", color="#3332"}) => {
   return (
     <div
       style={{
@@ -8,7 +8,7 @@ const Divider = ({width = "100%"}) => {
         marginLeft: "2rem",
         marginRight: "2rem",
         height: "1px",
-        border: "1px solid #3332",
+        border: `1px solid ${color}`,
         display:"flex",
         alignItems: "center",
       }}
