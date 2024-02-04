@@ -2,8 +2,9 @@ import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, LOGOUT_FAIL, LOGOUT_SUCCESS, 
 
 
 // LOGIN
-export const login = () => ({
+export const login = (data) => ({
     type: LOGIN,
+    payload: data
 })
 
 export const loginSuccess = (data) => ({

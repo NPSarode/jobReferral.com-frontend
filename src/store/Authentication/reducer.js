@@ -8,31 +8,50 @@ import {
 } from "./actionTypes";
 
 const INIT_STATE = {
-  c: 10
+  data: {},
+  error: {}
 };
 
-const reducer = (state = INIT_STATE, action) => {
+const authReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS: {
-      return "";
+      return {
+        ...state,
+        data: action.payload
+      };
     }
 
     case LOGIN_FAIL: {
-      return "";
+      return {
+        ...state,
+        error: action.payload
+      };
     }
     case REGISTER_SUCCESS: {
-      return "";
+      return {
+        ...state,
+        data: action.payload
+      };
     }
 
     case REGISTER_FAIL: {
-      return "";
+       return {
+        ...state,
+        error: action.payload
+      };
     }
     case LOGOUT_SUCCESS: {
-      return "";
+      return {
+        ...state,
+        data: action.payload
+      };
     }
 
     case LOGOUT_FAIL: {
-      return "";
+       return {
+        ...state,
+        error: action.payload
+      };
     }
 
     default : {
@@ -41,4 +60,4 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
-export default reducer;
+export default authReducer;

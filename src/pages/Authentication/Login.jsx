@@ -34,7 +34,7 @@ const Login = () => {
         .catch((err) => alert(err))
         .then((data) => {
 
-          if( data.status ) {
+          if( data.success ) {
 
             localStorage.setItem("token", data.token)
 

@@ -1,75 +1,65 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from "react";
 
-import TableContainer from '../../../common/TableContainer'
-import { Card, CardBody } from 'reactstrap';
+import TableContainer from "../../../common/TableContainer";
+import { Card, CardBody } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
+
+import { 
+  getUsers as onGetUsers 
+} from '../../../store/actions'
 
 const Users = () => {
 
-    const columns = useMemo(
-        () => [
-            {
-                Header: 'Name',
-                accessor: 'name',
-            },
-            {
-                Header: 'Position',
-                accessor: 'position'
-            },
-            {
-                Header: 'Office',
-                accessor: 'office'
-            },
-            {
-                Header: 'Age',
-                accessor: 'age'
-            },
-            {
-                Header: 'Start date',
-                accessor: 'startDate'
-            },
-            {
-                Header: 'Salary',
-                accessor: 'salary'
-            },
-        ],
-        []
-    );
+  const [userData, setUserData] = useState([])
 
-    const data = [
-        {
-            "name": "Jennifer Chang",
-            "position": "Regional Director",
-            "age": 28,
-            "office": "Singapore",
-            "startDate": "2010/11/14",
-            "salary": "$357,650"
+  const dispatch = useDispatch()
+  const { users } = useSelector(state => state.userReducer)
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Username",
+        accessor: "username",
+      },
+      {
+        Header: "Email",
+        accessor: "email",
+      },
+      {
+        Header: "Created On",
+        accessor: "created_on",
+        Cell: cellProps => {
+          return cellProps.cell.row.original.created_on.split("T").join(" ").split("Z");
         },
-        {
-            "name": "Gavin Joyce",
-            "position": "Developer",
-            "age": 42,
-            "office": "Edinburgh",
-            "startDate": "2010/12/22",
-            "salary": "$92,575"
-        },
-    ];
+      }
+    ],
+    []
+  );
+
+  useEffect(() => {
+    setUserData(users.users || [])
+  },[users.users])
+
+  useEffect(() => {
+    dispatch(onGetUsers())
+  }, [dispatch])
+
   return (
     <div className="page-content mt-4">
-            <div className="container-fluid">
-                <Card>
-                    <CardBody>
-                    <TableContainer
-                    columns={columns}
-                    data={data}
-                    isGlobalFilter={true}
-                    customPageSize={10}
-                    // className="custom-header-css"
-                />
-                    </CardBody>
-                </Card>
-            </div>
-        </div>
-  )
-}
+      <div className="container-fluid">
+        <Card>
+          <CardBody>
+            <TableContainer
+              columns={columns}
+              data={userData}
+              isGlobalFilter={true}
+              customPageSize={10}
+            />
+          </CardBody>
+        </Card>
+      </div>
+    </div>
+  );
+};
 
-export default Users
+export default Users;
