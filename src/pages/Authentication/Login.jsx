@@ -2,16 +2,18 @@ import React from "react";
 import { Button, Form, FormFeedback, Input, Label } from "reactstrap";
 import axios from "axios";
 import withReactContent from 'sweetalert2-react-content'
+import Swal from 'sweetalert2'
 
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Login = ({ setIsLogIn, isLogIn }) => {
+const Login = () => {
+  
+  const Navigate = useNavigate()
+  
   const validation = useFormik({
-    // enableReinitialize : use this flag when initial values needs to be changed
     enableReinitialize: true,
-
     initialValues: {
       username: "",
       password: "",
@@ -31,6 +33,35 @@ const Login = ({ setIsLogIn, isLogIn }) => {
         .then((response) => response.data)
         .catch((err) => alert(err))
         .then((data) => {
+
+          if( data.status ) {
+
+            localStorage.setItem("token", data.token)
+
+            withReactContent(Swal).fire({
+              title: <i>Login Successfull</i>,
+              inputValue:"",
+              icon:"success",
+              timer:2000,
+              heightAuto:false,
+              showConfirmButton:false,
+            })
+            
+            Navigate("/profile")
+
+          } else {
+
+            withReactContent(Swal).fire({
+              title: <i>{data.message}</i>,
+              inputValue:"",
+              icon:"error",
+              timer:3000,
+              heightAuto:false,
+              showConfirmButton:false,
+            })
+
+          }
+
         });
       validation.resetForm();
     },
@@ -94,15 +125,15 @@ const Login = ({ setIsLogIn, isLogIn }) => {
               </FormFeedback>
             ) : null}
           </div>
-          <Button color="info">Log In</Button>
+          <Button color="info">Sign In</Button>
         </Form>
 
         <div className="mt-2 text-center">
           <p>
             Don&#39;t have an account ?{" "}
-            <Link to="/register" className="fw-medium text-primary">
+            <Link to="/register" className="fw-medium text-info">
               {" "}
-              Signup now{" "}
+              Register{" "}
             </Link>{" "}
           </p>
         </div>

@@ -23,7 +23,7 @@ const Profile = () => {
     <React.Fragment>
       <Container fluid>
         <Row className="m-0 mt-2 p-3">
-          <Col lg={3} className="p-2">
+          <Col lg={3}>
             <Card className="border-0">
               <CardBody>
                 <div className="profileImage">
@@ -33,10 +33,9 @@ const Profile = () => {
               <CardBody>
                 <h5 className="text-center">Nikhil Sarode</h5>
                 <h5 className="text-center text-muted">Fronend Developer</h5>
+                <h6 className="text-center text-muted">Male /  23 Year's Old / 3+ Year Experience</h6>
               </CardBody>
-            </Card>
-
-            <Card className="shdaow-md">
+            
               <CardBody>
                 <div className="connectDetail">
                   <img src={callIcon} alt="" className="rounded" />
@@ -68,11 +67,13 @@ const Profile = () => {
               </CardBody>
             </Card>
           </Col>
-
-          <Col lg={9} className="p-2">
+          <Col lg={9}>
             <Card>
-              <CardBody>
-                <div className="d-flex justify-content-end mx-3 flex-wrap gap-2">
+              <CardBody className="d-flex">
+                <div className="col-lg-9">
+                  <div className="h1 mb-0">Profile</div>
+                </div>
+                <div className="d-flex justify-content-end mx-3 flex-wrap gap-2 col-lg-3">
                   <Button className="btn btn-dark waves-effect waves-light bg-opacity-50">
                     Edit Profile
                   </Button>

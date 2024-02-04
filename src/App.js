@@ -1,32 +1,46 @@
-import { Navbar } from "./pages/Common/Navbar"
-import "./App.css"
-import { Route, Routes } from "react-router"
-import Profile from "./pages/Profile/Profile"
-import Footer from "./pages/Common/Footer"
-import Login from "./pages/Authentication/Login"
-import { useState } from "react"
-import React from "react"
+import "./App.css";
+import { Route, Routes } from "react-router";
+import Profile from "./pages/Profile/Profile";
+import Login from "./pages/Authentication/Login";
+import React from "react";
+import Register from "./pages/Authentication/Register";
+import AuthProtected from "./pages/Common/AuthProtected";
+import Users from "./pages/Configuration/Users/Users";
 
 function App() {
-  const [isLogIn, setIsLogIn] = useState(true)
   return (
     <>
-      {isLogIn ? (
-        <Login setIsLogIn={setIsLogIn} isLogIn={isLogIn} />
-      ) : (
-        <>
-          <Navbar setIsLogIn={setIsLogIn} />
 
-          <Routes>
-            <Route path={"/"} element={<Login />} />
-            <Route path={"/profile"} element={<Profile />} />
-          </Routes>
+      <Routes>
+        <Route path="/" element={
+          localStorage.getItem("token") ? 
+          <AuthProtected>
+            <Profile/>
+          </AuthProtected>
+          :
+          <Login />
+        }></Route>
+        <Route path="/users" element={
+          localStorage.getItem("token") ? 
+          <AuthProtected>
+            <Users/>
+          </AuthProtected>
+          :
+          <Login />
+        }></Route>
+        <Route
+          path="/profile"
+          element={
+            <AuthProtected>
+              <Profile />
+            </AuthProtected>
+          }
+        ></Route>
+        <Route path={"/register"} element={<Register />} />
+      </Routes>
 
-          <Footer title={"Nikhil Sarode"} tech={"MERN"} />
-        </>
-      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
