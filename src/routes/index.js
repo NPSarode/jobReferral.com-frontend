@@ -18,7 +18,7 @@ const authProtectedRoutes = [
   {
     path: "/",
     exact: true,
-    component: < Navigate to="/summary" />,
+    component: < Navigate to="/joblist" />,
   },
 ];
 

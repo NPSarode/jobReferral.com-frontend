@@ -16,16 +16,16 @@ const Summary = () => {
 
   const [data, setData] = useState([])
 
-  const searchandler = (listItem) => {
+  // const searchandler = (listItem) => {
 
-    setData(
-        data.filter((item, key) => {
-        if(item.name.includes(listItem))
-        return item
-      })
-    )
+  //   setData(
+  //       data.filter((item, key) => {
+  //       if(item.name.includes(listItem))
+  //       return item
+  //     })
+  //   )
 
-  }
+  // }
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_ENDPOINT}/companydetails`, {
           headers: {
@@ -53,13 +53,13 @@ const Summary = () => {
                 className="form-control border border-dark"
                 id="formrow-firstname-Input"
                 placeholder="Search..."
-                onChange={(e) => {searchandler(e)}}
+                // onChange={(e) => {searchandler(e)}}
               />
             </div>
           </Col>
         </Row>
         <Row>
-          {data.map((data, key) => (
+          {[].map((data, key) => (
             <Col className="p-2" lg={3} md={4} sm={12}>
               <Card
                 className="text-muted p-2 shadow-md"
