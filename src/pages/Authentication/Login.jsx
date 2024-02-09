@@ -3,6 +3,7 @@ import { Button, Form, FormFeedback, Input, Label } from "reactstrap";
 import axios from "axios";
 import withReactContent from 'sweetalert2-react-content'
 import Swal from 'sweetalert2'
+import loginImage from '../../assets/loginImage.png'
 
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -47,7 +48,7 @@ const Login = () => {
               showConfirmButton:false,
             })
             
-            Navigate("/profile")
+            Navigate("/joblist")
 
           } else {
 
@@ -70,6 +71,9 @@ const Login = () => {
   return (
     <div className="myForm d-flex justify-content-center align-items-center flex-column">
       <div>
+        <div className="loginImage">
+          <img src={loginImage} alt="" />
+        </div>
         <div className="d-flex ">
           <h2>Login</h2>
         </div>

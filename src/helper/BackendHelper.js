@@ -8,3 +8,6 @@ export const register = (data) => post(url.REGISTER, data)
 
 // USERS
 export const getUsers = () => get(url.USERS)
+
+// COMPANY DETAILS
+export const getCompanyDetails = () => get(url.JOB_SUMMARY)

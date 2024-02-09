@@ -1,17 +1,15 @@
 import "./App.css";
 import { Route, Routes } from "react-router";
-import Profile from "./pages/Profile/Profile";
-import Login from "./pages/Authentication/Login";
 import React from "react";
-import Register from "./pages/Authentication/Register";
 import AuthProtected from "./pages/Common/AuthProtected";
-import Users from "./pages/Configuration/Users/Users";
+import NonProtected from "./pages/Common/NonProtected";
+
+import { authProtectedRoutes, publicRoutes } from "./routes/index";
 
 function App() {
   return (
     <>
-
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={
           localStorage.getItem("token") ? 
           <AuthProtected>
@@ -37,8 +35,34 @@ function App() {
           }
         ></Route>
         <Route path={"/register"} element={<Register />} />
-      </Routes>
+      </Routes> */}
 
+      <Routes>
+        {authProtectedRoutes.map((route, key) => (
+          <Route
+          path={route.path}
+          element={
+            <AuthProtected>
+              {route.component}
+            </AuthProtected>}
+          key={key}
+          exact={true}
+        />
+        ))}
+
+        {publicRoutes.map((route, key) => (
+          <Route
+          path={route.path}
+          element={
+            <NonProtected>
+              {route.component}
+            </NonProtected>
+          }
+          key={key}
+          exact={true}
+        />
+        ))}
+      </Routes>
     </>
   );
 }

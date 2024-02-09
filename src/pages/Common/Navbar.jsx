@@ -52,8 +52,9 @@ export const Navbar = () => {
 
         });
   }
+  
   return (
-    <div className="navbar shadow">
+    <div className="navbar shadow" style={{position:'sticky', top:'0',zIndex:'9'}}>
       <div className="text-center">
         <img src={logo} className="rounded mx-5" alt="..." />
       </div>

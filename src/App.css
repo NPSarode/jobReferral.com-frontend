@@ -2,7 +2,7 @@
 
 :root {
   --primary: #404079;
-  --bg-color: #bfbbbb;
+  --bg-color: #e2dbdb;
   --hover-color: rgb(149, 141, 141);
 }
 
@@ -150,4 +150,10 @@ body {
   border-radius: 20px;
   color: var(--bg-color);
   border: 1px solid #333;
+}
+
+.loginImage {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
