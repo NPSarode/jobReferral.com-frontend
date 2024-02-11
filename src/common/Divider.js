@@ -5,8 +5,8 @@ const Divider = ({width = "100%", color="#3332"}) => {
     <div
       style={{
         width: width,
-        marginLeft: "2rem",
-        marginRight: "2rem",
+        // marginLeft: "2rem",
+        // marginRight: "2rem",
         height: "1px",
         border: `1px solid ${color}`,
         display:"flex",

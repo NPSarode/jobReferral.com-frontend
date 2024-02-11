@@ -21,7 +21,7 @@ import {
 import { useFormik } from "formik";
 import withReactContent from "sweetalert2-react-content";
 import Swal from 'sweetalert2'
-import { Navigate } from "react-router-dom";
+import Divider from '../../common/Divider'
 
 const Summary = () => {
   const [data, setData] = useState([]);
@@ -277,6 +277,7 @@ const Summary = () => {
             </div>
           </Col>
         </Row>
+        <Divider/>
         <Row>
           {data.map((data, key) => (
             <Col key={key} className="p-2" lg={3} md={4} sm={12}>
