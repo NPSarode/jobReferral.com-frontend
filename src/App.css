@@ -157,3 +157,17 @@ body {
   display: flex;
   justify-content: flex-end;
 }
+
+@media screen and (max-width: 700px) {
+
+  .myForm > div {
+    width: 70%;
+  }
+
+  .loginImage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+}

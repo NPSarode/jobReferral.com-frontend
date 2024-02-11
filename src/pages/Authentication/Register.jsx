@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Button, Col, Form, FormFeedback, Input, Label, Row } from "reactstrap";
+import React from "react";
+import { Button, Form, FormFeedback, Input, Label } from "reactstrap";
 import axios from "axios";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
-import Switch from "react-switch";
 
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -11,49 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
 
-  const [Switch1, setSwitch1] = useState(true)
-  const [Switch2, setSwitch2] = useState(false)
   const Navigate = useNavigate();
-
-  const Offsymbol = () => {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100%",
-          fontSize: 12,
-          color: "#fff",
-          paddingRight: 2
-        }}
-      >
-        {" "}
-        No
-      </div>
-    );
-  };
-
-  const OnSymbol = () => {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100%",
-          fontSize: 12,
-          color: "#fff",
-          paddingRight: 2
-        }}
-      >
-        {" "}
-        Yes
-      </div>
-    );
-  };
-
-
 
   const validation = useFormik({
     enableReinitialize: true,
@@ -187,40 +144,6 @@ const Register = () => {
               </FormFeedback>
             ) : null}
           </div>
-          <Row>
-            <Col lg="6">
-              <h5 className="font-size-14 mb-3">Employee/Fresher</h5>
-              <div>
-                <Switch
-                  uncheckedIcon={<Offsymbol />}
-                  checkedIcon={<OnSymbol />}
-                  className="me-1 mb-sm-8 mb-2"
-                  onColor="#17a2b8"
-                  onChange={() => {
-                    setSwitch1(!Switch1)
-                    setSwitch2(!Switch2)
-                  }}
-                  checked={Switch1}
-                />
-              </div>
-            </Col>
-            <Col lg="6">
-              <h5 className="font-size-14 mb-3">Employer</h5>
-              <div>
-                <Switch
-                  uncheckedIcon={<Offsymbol />}
-                  checkedIcon={<OnSymbol />}
-                  className="me-1 mb-sm-8 mb-2"
-                  onColor="#17a2b8"
-                  onChange={() => {
-                    setSwitch1(!Switch1)
-                    setSwitch2(!Switch2)
-                  }}
-                  checked={Switch2}
-                />
-              </div>
-            </Col>
-          </Row>
           <Button className="mt-3" color="info">Sign Up</Button>
         </Form>
 

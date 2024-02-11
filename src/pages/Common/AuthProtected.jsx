@@ -9,7 +9,7 @@ const AuthProtected = (props) => {
       <>
       <Navbar/>
       <div>{props.children}</div>
-      <Footer title={"Nikhil sarode"} tech={"MERN"}/>
+      {/* <Footer title={"Nikhil sarode"} tech={"MERN"}/> */}
       </>
     )
   } else {
