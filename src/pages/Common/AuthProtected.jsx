@@ -1,6 +1,5 @@
 import React from 'react'
 import { Navbar } from './Navbar'
-import Footer from './Footer'
 import { Navigate } from 'react-router-dom'
 
 const AuthProtected = (props) => {
@@ -19,4 +18,4 @@ const AuthProtected = (props) => {
   }
 }
 
-export default AuthProtected
+export default AuthProtected 
