@@ -165,9 +165,11 @@ body {
   }
 
   .loginImage {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    display: none;
+  }
+
+  .navbar div img {
+    width: 10vw;
   }
 
 }

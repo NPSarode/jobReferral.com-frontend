@@ -9,33 +9,6 @@ import { authProtectedRoutes, publicRoutes } from "./routes/index";
 function App() {
   return (
     <>
-      {/* <Routes>
-        <Route path="/" element={
-          localStorage.getItem("token") ? 
-          <AuthProtected>
-            <Profile/>
-          </AuthProtected>
-          :
-          <Login />
-        }></Route>
-        <Route path="/users" element={
-          localStorage.getItem("token") ? 
-          <AuthProtected>
-            <Users/>
-          </AuthProtected>
-          :
-          <Login />
-        }></Route>
-        <Route
-          path="/profile"
-          element={
-            <AuthProtected>
-              <Profile />
-            </AuthProtected>
-          }
-        ></Route>
-        <Route path={"/register"} element={<Register />} />
-      </Routes> */}
 
       <Routes>
         {authProtectedRoutes.map((route, key) => (
