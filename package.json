@@ -1,5 +1,6 @@
 {
   "name": "jobreferral.com-frontend",
+  "homepage": "https://get-your-referral.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
