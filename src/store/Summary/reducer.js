@@ -1,4 +1,4 @@
-import { GET_JOB_SUMMARY_FAIL, GET_JOB_SUMMARY_SUCCESS } from "./actionTypes";
+import { ADD_JOB_FAIL, ADD_JOB_SUCCESS, GET_JOB_SUMMARY_FAIL, GET_JOB_SUMMARY_SUCCESS } from "./actionTypes";
 
 const INIT_STATE = {
   details: [],
@@ -8,13 +8,30 @@ const INIT_STATE = {
 const jobSummary = (state = INIT_STATE, action) => {
   switch (action.type) {
     case GET_JOB_SUMMARY_SUCCESS: {
-      return {
-        ...state,
-        details: action.payload
-      };
+      if(action.payload.success) {
+        return {
+          ...state,
+          details: action.payload.data
+        };
+      }
+      return state
     }
 
     case GET_JOB_SUMMARY_FAIL: {
+      return {
+        ...state,
+        error: action.payload
+      };
+    }
+    
+    case ADD_JOB_SUCCESS: {
+      return {
+        ...state,
+        details: [...state.details, action.payload]
+      };
+    }
+
+    case ADD_JOB_FAIL: {
       return {
         ...state,
         error: action.payload

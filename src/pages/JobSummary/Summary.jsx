@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux'
 
 import {
   Button,
@@ -19,12 +19,16 @@ import {
   Row,
 } from "reactstrap";
 import { useFormik } from "formik";
-import withReactContent from "sweetalert2-react-content";
-import Swal from 'sweetalert2'
 import Divider from '../../common/Divider'
+import { 
+  addJob as onAddJob, 
+  getJobSummary as onGetJobSummary } from "../../store/actions";
 
 const Summary = () => {
-  const [data, setData] = useState([]);
+
+  const dispatch = useDispatch()
+  const { details } = useSelector(state => state.jobDetailsReducer)
+
   const [modal, setModal] = useState(false);
 
   const validation = useFormik({
@@ -40,72 +44,21 @@ const Summary = () => {
       post: Yup.string().required("Please Enter Post"),
     }),
     onSubmit: (values) => {
-      console.log(values)
-      axios
-      .post(`${process.env.REACT_APP_API_ENDPOINT}/companydetails`, values, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        withCredentials: true,
-      })
-      .then((response) => response.data)
-      .catch((err) => err)
-      .then((data) => {
-        if(data.success) {
-          withReactContent(Swal).fire({
-            title: <i>Job Added</i>,
-            inputValue:"",
-            icon:"success",
-            timer:2000,
-            heightAuto:false,
-            showConfirmButton:false,
-          })
-        } else {
-          withReactContent(Swal).fire({
-            title: <i>{data.message}</i>,
-            inputValue:"",
-            icon:"success",
-            timer:2000,
-            heightAuto:false,
-            showConfirmButton:false,
-          })
-        }
-      });
-
+      dispatch(onAddJob(values))
       setModal(false)
 
       validation.resetForm()
     },
   });
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_ENDPOINT}/companydetails`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        withCredentials: true,
-      })
-      .then((response) => response.data)
-      .catch((err) => {
-        setData([])
-        console.log(err.response.data.message)
-        withReactContent(Swal).fire({
-          title: <i>asdas</i>,
-          inputValue:"",
-          icon:"error",
-          timer:2000,
-          heightAuto:false,
-          showConfirmButton:false,
-        })
 
-      })
-      .then((data) => {
-        setData(data?.details);
-      });
-  }, []);
+  useEffect(() => {
+    if(localStorage.getItem('token') && !details.length) {
+      dispatch(onGetJobSummary())
+    }
+
+  }, [dispatch, details.length]);
+
 
   return (
     <div style={{ height: "calc(100vh-100px)" }}>
@@ -279,7 +232,7 @@ const Summary = () => {
         </Row>
         <Divider/>
         <Row>
-          {data.map((data, key) => (
+          {details.map((data, key) => (
             <Col key={key} className="p-2" lg={3} md={4} sm={12}>
               <Card
                 className="text-muted p-2 shadow-md"

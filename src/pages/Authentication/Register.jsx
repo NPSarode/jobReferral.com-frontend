@@ -36,7 +36,7 @@ const Register = () => {
           withCredentials: true,
         })
         .then((response) => response.data)
-        .catch((err) => alert(err))
+        .catch((err) => {})
         .then((data) => {
           if (data.success) {
             withReactContent(Swal).fire({

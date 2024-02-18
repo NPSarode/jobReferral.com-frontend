@@ -8,7 +8,7 @@ import {
 } from "./actionTypes";
 
 const INIT_STATE = {
-  data: {},
+  data: "",
   error: {}
 };
 

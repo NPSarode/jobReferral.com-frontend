@@ -2,10 +2,13 @@ import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, LOGOUT_FAIL, LOGOUT_SUCCESS, 
 
 
 // LOGIN
-export const login = (data) => ({
-    type: LOGIN,
-    payload: data
-})
+export const login = (data, Navigate) => {
+    console.log(data)
+    return {
+        type: LOGIN,
+        payload: {data, Navigate}
+    }
+}
 
 export const loginSuccess = (data) => ({
     type: LOGIN_SUCCESS,

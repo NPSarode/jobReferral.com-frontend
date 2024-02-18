@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, FormFeedback, Input, Label } from "reactstrap";
-import axios from "axios";
-import withReactContent from 'sweetalert2-react-content'
-import Swal from 'sweetalert2'
 import loginImage from '../../assets/loginImage.png'
 
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 
+import { 
+  login as onLogin 
+} from '../../store/actions'
+import withReactContent from "sweetalert2-react-content";
+import Swal from 'sweetalert2'
+
 const Login = () => {
+
+  const dispatch = useDispatch()
+  const { data } = useSelector(state => state.authReducer)
   
   const Navigate = useNavigate()
   
@@ -24,49 +31,25 @@ const Login = () => {
       password: Yup.string().required("Please Enter Your Password"),
     }),
     onSubmit: (values) => {
-      axios
-        .post(`${process.env.REACT_APP_API_ENDPOINT}/login`, values, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        })
-        .then((response) => response.data)
-        .catch((err) => alert(err))
-        .then((data) => {
-
-          if( data.success ) {
-
-            localStorage.setItem("token", data.token)
-
-            withReactContent(Swal).fire({
-              title: <i>Login Successfull</i>,
-              inputValue:"",
-              icon:"success",
-              timer:2000,
-              heightAuto:false,
-              showConfirmButton:false,
-            })
-            
-            Navigate("/joblist")
-
-          } else {
-
-            withReactContent(Swal).fire({
-              title: <i>{data.message}</i>,
-              inputValue:"",
-              icon:"error",
-              timer:3000,
-              heightAuto:false,
-              showConfirmButton:false,
-            })
-
-          }
-
-        });
+      
+      dispatch(onLogin(values, Navigate))
+      
       validation.resetForm();
     },
   });
+
+  useEffect(()=>{
+    if(data) {
+      withReactContent(Swal).fire({
+        title: <i>Login Successfull</i>,
+        inputValue: "",
+        icon: "success",
+        timer: 2000,
+        heightAuto: false,
+        showConfirmButton: false,
+      });
+    }
+  },[data])
 
   return (
     <div className="myForm d-flex justify-content-center align-items-center flex-column">

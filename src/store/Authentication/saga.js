@@ -15,9 +15,11 @@ import {
 
 import { login, logout } from "../../helper/BackendHelper";
 
-function* loginUser({payload: data}) {
+function* loginUser({payload: { data, Navigate}}) {
   try {
     const response = yield call(login, data);
+    localStorage.setItem('token', response)
+    Navigate("/")
     yield put(loginSuccess(response));
   } catch (error) {
     yield put(loginFail(error));

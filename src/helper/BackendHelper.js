@@ -1,8 +1,8 @@
-import { get, post } from "./ApiHelper";
+import { get, loginUser, post } from "./ApiHelper";
 import * as url from "./UrlHelper";
 
 // AUTH
-export const login = (data) => post(url.LOGIN, data)
+export const login = (data) => loginUser(url.LOGIN, data)
 export const logout = () => get(url.LOGOUT)
 export const register = (data) => post(url.REGISTER, data)
 
@@ -11,3 +11,4 @@ export const getUsers = () => get(url.USERS)
 
 // COMPANY DETAILS
 export const getCompanyDetails = () => get(url.JOB_SUMMARY)
+export const addJobDetails = (data) => post(url.ADD_JOB, data)

@@ -8,3 +8,4 @@ export const USERS = "/users"
 
 // COMPANY DETAILS
 export const JOB_SUMMARY = "/companydetails"
+export const ADD_JOB = "/companydetails"
