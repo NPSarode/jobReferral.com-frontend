@@ -38,6 +38,7 @@ body {
 .navbar div img {
   cursor: pointer;
   width: 20%;
+  margin-inline-start: 2vw;
 }
 
 .parentUL {

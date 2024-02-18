@@ -56,7 +56,7 @@ export const Navbar = () => {
   return (
     <div className="navbar shadow" style={{position:'sticky', top:'0',zIndex:'9'}}>
       <div className="text-center">
-        <img src={logo} className="rounded mx-5" alt="..."  onClick={()=>{Navigate('/')}}/>
+        <img src={logo} className="rounded" alt="..."  onClick={()=>{Navigate('/')}}/>
       </div>
       <ul className="text-white mb-0 parentUL">
         <Link 
