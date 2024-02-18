@@ -249,6 +249,12 @@ body {
 
 
 
+.myIcons {
+  font-size: 1.5vw; 
+  margin-right: 20px;
+}
+
+
 
 /****************************** Media Query ******************************/
 
@@ -292,6 +298,10 @@ body {
   }
   .registerFooter {
     padding-top: 5vw;
+  }
+  .myIcons {
+    font-size: 8vw; 
+    margin-right: 20px;
   }
 }
 

@@ -220,7 +220,7 @@ const Summary = () => {
                 type="text"
                 className="form-control border border-dark"
                 id="formrow-firstname-Input"
-                placeholder="Search..."
+                placeholder="Search Your Company..."
                 style={{
                   borderRadius: "30px",
                 }}
@@ -256,17 +256,37 @@ const Summary = () => {
                   <CardTitle className="text-center h5 bg-dark bg-opacity-50 text-white rounded">
                     {data.name}
                   </CardTitle>
-                  <CardBody className="border border-dark rounded ">
-                    <p
-                      className="p-0 m-0 text-muted"
-                      style={{
-                        fontWeight: "100",
-                        fontSize: "15px",
-                      }}
+                  <CardBody className="border border-dark rounded m-0">
+                    <Row className="my-2">
+                      <Col
+                      className="d-flex justify-content-start align-items-center  text-success myColumn"
+                      >
+                      <i 
+                      class='myIcons bx bxs-timer'
+                      />
+                      {data.last_date.split("T")[0]}
+                      </Col>
+                    </Row>
+                    <Row className="my-2">
+                    <Col
+                    className="d-flex justify-content-start align-items-center"
                     >
-                      {data.last_date.split("T").join(" ").split("Z")[0]}
-                    </p>
-                    <p>{data.description}</p>
+                    <i 
+                    class='myIcons bx bxs-envelope' 
+                    />
+                      {data.post}
+                      </Col>
+                    </Row>
+                    <Row className="my-2">
+                    <Col
+                    className="d-flex justify-content-start align-items-center"
+                    >
+                    <i 
+                    class='myIcons bx bxs-location-plus' 
+                    />
+                      Pune, Maharashtra, India
+                      </Col>
+                    </Row>
                   </CardBody>
                 </Card>
               </Col>
