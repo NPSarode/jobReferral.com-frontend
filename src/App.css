@@ -219,7 +219,25 @@ body {
 .loginForm form {
   padding-top: 2vw;
 }
-
+.loginForm form input{
+  background-color: var(--bg-color);
+  border: 2px dashed var(--primary);
+  color: #060402;
+  box-shadow: 0 0 10px var(--primary);
+}
+.loginForm form input::placeholder{
+  color: var(--primary);
+}
+.loginForm form button {
+  width: 100%;
+  border-radius: 20px;
+  padding: 0.4vw 0;
+  background: var(--primary);
+  border: 1px solid var(--primary);
+} 
+.loginForm form button:hover {
+  background: var(--bg-color);
+}
 .registerFooter {
   padding-top: 15vw;
 }
@@ -247,8 +265,10 @@ body {
     letter-spacing: 0.9px;
   }
   .loginImage p {
-    margin-top: 45vw;
+    margin-top: 40vw;
     font-size: small;
+    line-height: 5vw;
+    letter-spacing: 0.3vw;
     width: 40ch;
   }
   .loginForm {

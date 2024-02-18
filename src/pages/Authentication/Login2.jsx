@@ -66,7 +66,7 @@ const Login2 = () => {
             return false;
           }}
         >
-          <div className="form-group">
+          <div className="form-group ">
             <Label for="username">Username</Label>
             {/* <i className='bx bxs-user-circle text-dark'></i> */}
             <Input
@@ -89,7 +89,7 @@ const Login2 = () => {
               </FormFeedback>
             ) : null}
           </div>
-          <div className="form-group">
+          <div className="form-group ">
             <Label for="password">Password</Label>
             <Input
               type="password"
@@ -111,7 +111,7 @@ const Login2 = () => {
               </FormFeedback>
             ) : null}
           </div>
-          <Button className="bg-success">Sign In</Button>
+          <Button className="text-success border border-success mt-3">Sign In</Button>
         </Form>
         
         <div className="mt-2 text-center loginFooter">
