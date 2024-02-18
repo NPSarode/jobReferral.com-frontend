@@ -13,13 +13,15 @@ import {
     registerSuccess
 } from "./actions";
 
-import { login, logout } from "../../helper/BackendHelper";
+import { login, logout, register } from "../../helper/BackendHelper";
 
 function* loginUser({payload: { data, Navigate}}) {
   try {
     const response = yield call(login, data);
-    localStorage.setItem('token', response)
-    Navigate("/")
+    if(response) {
+      localStorage.setItem('token', response)
+      Navigate("/")
+    }
     yield put(loginSuccess(response));
   } catch (error) {
     yield put(loginFail(error));
@@ -37,7 +39,7 @@ function* logoutUser() {
 
 function* registerUser({payload: data}) {
   try {
-    const response = yield call(login, data);
+    const response = yield call(register, data);
     yield put(registerSuccess(response));
   } catch (error) {
     yield put(registerFail(error));

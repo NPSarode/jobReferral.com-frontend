@@ -10,6 +10,24 @@ axiosApi.defaults.headers.common["Authorization"] =
   "Bearer " + localStorage.getItem("token");
 
 
+  export async function registerUser(url, data, config = {}) {
+    return axiosApi.post(url, { ...data }, { ...config }).then((response) => {
+      console.log(response.data)
+      if (response.data.success) {
+        return response.data.message;
+      }
+  
+      withReactContent(Swal).fire({
+        title: <i>{response.data.message}</i>,
+        inputValue: "",
+        icon: "error",
+        timer: 2000,
+        heightAuto: false,
+        showConfirmButton: false,
+      });
+    });
+  }
+
   export async function loginUser(url, data, config = {}) {
     return axiosApi.post(url, { ...data }, { ...config }).then((response) => {
       if (response.data.success) {

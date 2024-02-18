@@ -59,13 +59,14 @@ export const Navbar = () => {
         <img src={logo} className="rounded mx-5" alt="..."  onClick={()=>{Navigate('/')}}/>
       </div>
       <ul className="text-white mb-0 parentUL">
-        {/* <Link to={"/profile"}>
-          <li className="text-white">Profile</li>
-        </Link> */}
         <Link 
         onClick={onClickLogOut} 
         >
-          <li className="text-white">Log Out</li>
+          <i className='bx bx-log-out-circle text-white' style={
+            {
+              fontSize:'200%',
+              transform: 'rotate(90deg)'
+            }}></i>
         </Link>
       </ul>
     </div>

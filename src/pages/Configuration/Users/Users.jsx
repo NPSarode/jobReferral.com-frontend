@@ -52,7 +52,7 @@ const Users = () => {
             <TableContainer
               columns={columns}
               data={userData}
-              isGlobalFilter={true}
+              // isGlobalFilter={true}
               customPageSize={10}
             />
           </CardBody>

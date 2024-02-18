@@ -3,7 +3,6 @@ import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, LOGOUT_FAIL, LOGOUT_SUCCESS, 
 
 // LOGIN
 export const login = (data, Navigate) => {
-    console.log(data)
     return {
         type: LOGIN,
         payload: {data, Navigate}
@@ -37,8 +36,9 @@ export const logoutFail = (err) => ({
 
 // REGISTER
 
-export const register = () => ({
+export const register = (data) => ({
     type: REGISTER,
+    payload: data
 })
 
 export const registerSuccess = (data) => ({

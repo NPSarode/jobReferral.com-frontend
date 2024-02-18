@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Button,
@@ -19,17 +19,28 @@ import {
   Row,
 } from "reactstrap";
 import { useFormik } from "formik";
-import Divider from '../../common/Divider'
-import { 
-  addJob as onAddJob, 
-  getJobSummary as onGetJobSummary } from "../../store/actions";
+import Divider from "../../common/Divider";
+import {
+  addJob as onAddJob,
+  getJobSummary as onGetJobSummary,
+} from "../../store/actions";
 
 const Summary = () => {
-
-  const dispatch = useDispatch()
-  const { details } = useSelector(state => state.jobDetailsReducer)
+  const dispatch = useDispatch();
+  const { details } = useSelector((state) => state.jobDetailsReducer);
 
   const [modal, setModal] = useState(false);
+  const [listItems, setListItems] = useState([]);
+
+  const searchHandler = (item) => {
+    setListItems(
+      details.filter((data) => {
+        if (data.name.toLowerCase().includes(item.toLowerCase())) {
+          return data;
+        }
+      })
+    );
+  };
 
   const validation = useFormik({
     initialValues: {
@@ -44,21 +55,22 @@ const Summary = () => {
       post: Yup.string().required("Please Enter Post"),
     }),
     onSubmit: (values) => {
-      dispatch(onAddJob(values))
-      setModal(false)
+      dispatch(onAddJob(values));
+      setModal(false);
 
-      validation.resetForm()
+      validation.resetForm();
     },
   });
 
-
   useEffect(() => {
-    if(localStorage.getItem('token') && !details.length) {
-      dispatch(onGetJobSummary())
+    if (localStorage.getItem("token") && !details.length) {
+      dispatch(onGetJobSummary());
     }
-
   }, [dispatch, details.length]);
 
+  useEffect(() => {
+    setListItems(details);
+  }, [details]);
 
   return (
     <div style={{ height: "calc(100vh-100px)" }}>
@@ -210,9 +222,11 @@ const Summary = () => {
                 id="formrow-firstname-Input"
                 placeholder="Search..."
                 style={{
-                  borderRadius:'30px'
+                  borderRadius: "30px",
                 }}
-                // onChange={(e) => {searchandler(e)}}
+                onChange={(e) => {
+                  searchHandler(e.target.value);
+                }}
               />
             </div>
           </Col>
@@ -230,29 +244,36 @@ const Summary = () => {
             </div>
           </Col>
         </Row>
-        <Divider/>
+        <Divider />
         <Row>
-          {details.map((data, key) => (
-            <Col key={key} className="p-2" lg={3} md={4} sm={12}>
-              <Card
-                className="text-muted p-2 shadow-md"
-                style={{ minHeight: "20vh" }}
-              >
-                <CardTitle className="text-center h5 bg-dark bg-opacity-50 text-white rounded">
-                  {data.name}
-                </CardTitle>
-                <CardBody className="border border-dark rounded ">
-                  <p
-                  className="p-0 m-0 text-muted"
-                  style={{
-                    fontWeight:'100',
-                    fontSize: '15px'
-                  }}>{data.last_date.split("T").join(" ").split("Z")[0]}</p>
-                  <p>{data.description}</p>
-                </CardBody>
-              </Card>
-            </Col>
-          ))}
+          {listItems.length ? (
+            listItems.map((data, key) => (
+              <Col key={key} className="p-2" lg={3} md={4} sm={12}>
+                <Card
+                  className="text-muted p-2 shadow-md"
+                  style={{ minHeight: "20vh" }}
+                >
+                  <CardTitle className="text-center h5 bg-dark bg-opacity-50 text-white rounded">
+                    {data.name}
+                  </CardTitle>
+                  <CardBody className="border border-dark rounded ">
+                    <p
+                      className="p-0 m-0 text-muted"
+                      style={{
+                        fontWeight: "100",
+                        fontSize: "15px",
+                      }}
+                    >
+                      {data.last_date.split("T").join(" ").split("Z")[0]}
+                    </p>
+                    <p>{data.description}</p>
+                  </CardBody>
+                </Card>
+              </Col>
+            ))
+          ) : 
+            ""
+          }
         </Row>
       </Container>
     </div>

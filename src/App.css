@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
-  --primary: #404079;
-  --bg-color: #ece4e4;
+  /* --primary: #404079; */
+  --primary: #255F61;
+  --bg-color: #255F6144;
   --hover-color: rgb(149, 141, 141);
 }
 
@@ -52,13 +53,9 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   text-decoration: none;
+  transition: 2s ease-out;
 }
 
-.parentUL :hover {
-  text-decoration: none;
-  background: var(--hover-color);
-  border-radius: 20px;
-}
 
 .settingLogo {
   width: 3.5vw;
@@ -137,8 +134,10 @@ body {
 .myForm {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
-  url("https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d29ya3xlbnwwfHwwfHx8MA%3D%3D");
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
+  url("https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d29ya3xlbnwwfHwwfHx8MA%3D%3D"); */
+  background-image: linear-gradient(to left, #000000, #c8b8c866, #000000),
+    url("https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d29ya3xlbnwwfHwwfHx8MA%3D%3D");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -159,18 +158,124 @@ body {
   justify-content: flex-end;
 }
 
-@media screen and (max-width: 700px) {
 
-  .myForm > div {
-    width: 70%;
+/****************************** Login2 ******************************/
+
+.mainLogin {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  color: #060402;
+}
+
+.loginImage {
+  width: 70%;
+  height: 100vh;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("https://c1.wallpaperflare.com/preview/144/259/752/dream-job-application-location-job.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #ece4e4;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 5vw 2vw;
+  color: rgb(129, 182, 182);
+}
+
+.loginImage h4 {
+  width: 100%;
+  font-weight: 700;
+  font-size: 3vw;
+  letter-spacing: 5px;
+}
+.loginImage p {
+  align-items: center;
+  width: 75ch;
+  line-height: 2.5vw;
+  font-size: 1vw;
+  margin-top: 58vh;
+}
+
+.loginForm {
+  padding: 5vw 3vw;
+  width: 30%;
+  box-shadow: -10px 0 20px rgb(28, 41, 41);
+  /* background-color: rgb(29, 90, 92); */
+  background-image: linear-gradient(rgb(29, 90, 92, 0.5), rgb(29, 90, 92, 1));
+}
+
+.loginForm h1 {
+  font-size: 3vw;
+  font-weight: 700;
+}
+.loginForm form {
+  padding-top: 2vw;
+}
+
+.registerFooter {
+  padding-top: 15vw;
+}
+
+.loginFooter {
+  padding-top: 15vw;
+}
+
+
+
+
+/****************************** Media Query ******************************/
+
+
+@media (max-width: 600px) {
+  .mainLogin {
+    flex-direction: column;
   }
-
   .loginImage {
-    display: none;
+    width: 100%;
+    height: 40vh;
   }
-
-  .navbar div img {
-    width: 10vw;
+  .loginImage h4 {
+    font-size: 6vw;
+    letter-spacing: 0.9px;
   }
+  .loginImage p {
+    margin-top: 45vw;
+    font-size: small;
+    width: 40ch;
+  }
+  .loginForm {
+    width: 100%;
+    height: 60vh;
+    box-shadow: 0 -10px 20px rgb(28, 41, 41);
+    background-image: linear-gradient(rgb(29, 90, 92, 0.5), rgb(29, 90, 92, 1));
+  }
+  .loginForm h1 {
+    font-size: 8vw;
+    letter-spacing: 1.5vw;
+  }
+  .loginForm p {
+    font-size: 4vw;
+  }
+  .registerFooter {
+    padding-top: 5vw;
+  }
+}
 
+
+
+
+
+
+/****************************************************************************/
+
+#dataNotFoundImage {
+  width: 50%;
 }
