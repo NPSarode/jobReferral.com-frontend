@@ -253,6 +253,9 @@ body {
 
 
 @media (max-width: 600px) {
+  .settingLogo {
+    width: 5vw;
+  }
   .mainLogin {
     flex-direction: column;
   }
