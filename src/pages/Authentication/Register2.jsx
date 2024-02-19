@@ -135,7 +135,7 @@ const Register2 = () => {
               </FormFeedback>
             ) : null}
           </div>
-          <Button className="mt-3" color="success">
+          <Button className="text-success border border-success mt-3" color="success">
             Register
           </Button>
         </Form>
@@ -144,7 +144,7 @@ const Register2 = () => {
             Already have an account ?{" "}
             <Link to="/login" className="fw-medium text-success">
               {" "}
-              Sing in{" "}
+              Sign in{" "}
             </Link>{" "}
           </p>
         </div>
