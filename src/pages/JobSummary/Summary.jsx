@@ -262,7 +262,7 @@ const Summary = () => {
                       className="d-flex justify-content-start align-items-center  text-success myColumn"
                       >
                       <i 
-                      class='myIcons bx bxs-timer'
+                      className='myIcons bx bxs-timer'
                       />
                       {data.last_date.split("T")[0]}
                       </Col>
@@ -272,7 +272,7 @@ const Summary = () => {
                     className="d-flex justify-content-start align-items-center"
                     >
                     <i 
-                    class='myIcons bx bxs-envelope' 
+                    className='myIcons bx bxs-envelope' 
                     />
                       {data.post}
                       </Col>
@@ -282,7 +282,7 @@ const Summary = () => {
                     className="d-flex justify-content-start align-items-center"
                     >
                     <i 
-                    class='myIcons bx bxs-location-plus' 
+                    className='myIcons bx bxs-location-plus' 
                     />
                       Pune, Maharashtra, India
                       </Col>

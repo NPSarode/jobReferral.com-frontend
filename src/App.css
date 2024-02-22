@@ -25,7 +25,8 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background: var(--primary);
+  /* background: var(--primary); */
+  background-image: linear-gradient(rgb(29, 90, 92, 0.5), rgb(29, 90, 92, 1));;
 }
 
 .navbar div {
@@ -225,6 +226,7 @@ body {
   border: 2px dashed var(--primary);
   color: #060402;
   box-shadow: 0 0 10px var(--primary);
+  border-radius: 10px;
 }
 .loginForm form input::placeholder{
   color: var(--primary);
