@@ -2,9 +2,10 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 // Protected
-import Profile from "../pages/Profile/Profile";
+import Profile from "../pages/Profile/Profile2";
 import Summary from "../pages/JobSummary/Summary";
-import Users from "../pages/Configuration/Users/Users";
+// import Users from "../pages/Configuration/Users/Users";
+import WorkInProgress from "../pages/WorkInProgress";
 
 // Public
 // import Login from "../pages/Authentication/Login";
@@ -16,7 +17,7 @@ import Register2 from "../pages/Authentication/Register2";
 const authProtectedRoutes = [
   { path: "/profile", component: <Profile /> },
   { path: "/joblist", component: <Summary /> },
-  { path: "/users", component: <Users /> },
+  { path: "/users", component: <WorkInProgress /> },
   
 
   {

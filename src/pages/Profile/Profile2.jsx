@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import {
   Button,
@@ -17,57 +18,116 @@ import Docker from "../../assets/icons/dockerIcon.svg";
 
 import KnobChart from "../../common/knob";
 import Divider from "../../common/Divider";
- 
+
 const Profile = () => {
   return (
     <React.Fragment>
-      <Container fluid >
+      <Container fluid className="profilePage">
         <Row className="m-0 mt-2 p-3">
-          <Col lg={3}>
-            <Card className="border-0">
-              <CardBody>
-                <div className="profileImage">
-                  <img src={avatar} className="d-flex mx-auto" alt="avatar" />
-                </div>
-              </CardBody>
-              <CardBody>
-                <h5 className="text-center">Nikhil Sarode</h5>
-                <h5 className="text-center text-muted">Fronend Developer</h5>
-                <h6 className="text-center text-muted">Male /  23 Year's Old / 3+ Year Experience</h6>
-              </CardBody>
-            
-              <CardBody>
-                <div className="connectDetail">
-                  <img src={callIcon} alt="" className="rounded" />
-                  <h5 className="text-muted mx-5">+91 9854763280</h5>
-                </div>
-              </CardBody>
-              <CardBody>
-                <div className="connectDetail">
-                  <img src={emailIcon} alt="" className="rounded" />
-                  <h5 className="text-muted mx-5">example@gmail.com</h5>
-                </div>
-              </CardBody>
-              <CardBody className="d-flex">
-                {
-                  [{title:"FrontEnd", value:80},{title:"BackEnd", value:40},{title:"Database", value:20}].map((data, key) => {
-                    return <Col lg={4} key={key} className="p-0">
-                    <KnobChart
-                      value={data.value}
-                      fgColor="#404079"
-                      thickness={0.3}
-                      readOnly={true}
-                      height={160}
-                      width={120}
-                    />
-                    <h6 className="mx-3">{data.title}</h6>
-                  </Col>
-                  })
-                }
-              </CardBody>
-            </Card>
+          <Col lg={3} className="leftProfile">
+            <Row>
+              <Col lg={12} className="coverImage">
+                <img
+                  src="https://th.bing.com/th/id/OIP.UkzU2Gn5e3dwp48gT7Ro7AHaHa?rs=1&pid=ImgDetMain"
+                  alt="Cover"
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={12}>
+                <Card className="customCard">
+                  <img className="avatarImage" src={avatar} alt="Profile" />
+                  <CardBody>
+                    <h5 className="text-center">Nikhil Sarode</h5>
+                    <h5 className="text-center text-muted">
+                      Fronend Developer
+                    </h5>
+                    <h6 className="text-center text-muted">
+                      Male / 23 Year's Old / 3+ Year Experience
+                    </h6>
+                  </CardBody>
+
+                  <CardBody>
+                    <div className="connectDetail">
+                      <img src={callIcon} alt="" className="rounded" />
+                      <h5 className="text-muted mx-5">+91 9854763280</h5>
+                    </div>
+                  </CardBody>
+                  <CardBody>
+                    <div className="connectDetail">
+                      <img src={emailIcon} alt="" className="rounded" />
+                      <h5 className="text-muted mx-5">example@gmail.com</h5>
+                    </div>
+                  </CardBody>
+                  <CardBody className="userExperience">
+                    <CardTitle className="mb-5">Experience</CardTitle>
+                    <div>
+                      <ul className="verti-timeline list-unstyled">
+                        {[
+                          {
+                            id: 1,
+                            iconClass: "bx bx-server",
+                            designation: "Backend",
+                            timeDuration: "2022-23",
+                          },
+                          {
+                            id: 2,
+                            iconClass: "bx bx-code",
+                            designation: "Front End",
+                            timeDuration: "2021-22",
+                          },
+                        ].map((experience, i) => (
+                          <li
+                            className={`d-flex text-success justify-content-start align-items-start mt-3 + ${
+                              experience.id === 1
+                                ? "event-list active"
+                                : "event-list"
+                            }`}
+                            key={"_exp_" + i}
+                          >
+                            <div className="event-timeline-dot">
+                              <i
+                                className={
+                                  experience.id === 1
+                                    ? "bx bx-right-arrow-circle bx-fade-right"
+                                    : "bx bx-right-arrow-circle"
+                                }
+                              />
+                            </div>
+                            <div className="d-flex mx-5">
+                              <div className="me-3">
+                                <i
+                                  className={
+                                    "bx " +
+                                    experience.iconClass +
+                                    " h4 text-success"
+                                  }
+                                />
+                              </div>
+                              <div className="flex-grow-1">
+                                <div>
+                                  <h5 className="font-size-15">
+                                    <Link to={""} className="text-dark mx-2">
+                                      {experience.designation}
+                                    </Link>
+                                  </h5>
+                                  <span className="text-info">
+                                    {experience.timeDuration}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
           </Col>
-          <Col lg={9}>
+
+          {/* <Col lg={9} className="rigthProfile">
             <Card>
               <CardBody className="d-flex">
                 <div className="col-lg-9">
@@ -169,7 +229,7 @@ const Profile = () => {
                 </div>
               </CardBody>
             </Card>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </React.Fragment>

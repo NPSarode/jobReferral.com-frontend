@@ -5,6 +5,7 @@
   --primary: #255F61;
   --bg-color: #255F6144;
   --hover-color: rgb(149, 141, 141);
+  --text-color: rgb(255, 255, 255);
 }
 
 * {
@@ -17,6 +18,11 @@
 body {
   background: var(--bg-color);
   cursor: default;
+}
+
+.customCard {
+  background: transparent;
+  border: none;
 }
 
 /****************************** Navbar ******************************/
@@ -49,13 +55,23 @@ body {
   align-items: center;
 }
 
+.parentUL a { 
+  text-decoration: none;
+}
 .parentUL li {
   list-style: none;
-  text-decoration: none;
   padding: 10px 20px;
   cursor: pointer;
+  color: var(--text-color);
   text-decoration: none;
-  transition: 2s ease-out;
+  transition: 1s ease-out;
+  font-weight: 900;
+}
+.parentUL li:hover {
+  letter-spacing: 1px;
+  transform: scale(1.1);
+  list-style: none;
+  text-decoration: none;
 }
 
 
@@ -110,6 +126,74 @@ body {
 
 .techIcon {
   width: 10%;
+}
+
+/****************************** Profile2 ******************************/
+
+.leftProfile {
+  animation: leftSlide 0.5s ease-in-out;
+}
+.rigthProfile {
+  animation: rightSlide 0.5s ease-in-out;
+}
+
+@keyframes rightSlide {
+  0% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+  
+}
+
+@keyframes leftSlide {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+  
+}
+
+.coverImage img{
+  width: 100%;
+  max-height: 20vh;
+}
+
+.avatarImage {
+  width: 5vw;
+  position: absolute;
+  top: -5vh;
+  left: 1.5vw;
+  filter: drop-shadow(0 0 20px #373535);
+  transition: .3s ease-out;
+}
+
+.avatarImage:hover {
+  filter: drop-shadow(20px 0 20px #373535);
+  transform: translate(-10px, -10px);
+}
+
+@media (max-width: 600px) {
+  .leftProfile,
+  .coverImage, 
+  .connectDetail,
+  .profilePage.row,
+  .profilePage.row > div, 
+  .profilePage{
+    padding: 0;
+    margin: 0;
+  }
+  .userExperience {
+    margin-inline: 0;
+  }
+  .avatarImage {
+    width: 25vw;
+    top: -7vh;
+    left: 3vw;
+  }
 }
 
 /****************************** Footer ******************************/
@@ -262,6 +346,9 @@ body {
 
 
 @media (max-width: 600px) {
+  .parentUL {
+    justify-content: flex-end;
+  }
   .navbar div img {
     cursor: pointer;
     width: 12vw;
