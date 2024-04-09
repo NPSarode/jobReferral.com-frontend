@@ -79,7 +79,7 @@ export const Navbar = () => {
       </div>
       <div className="col-md-2 LogoutButton">
         <span className="text-white">
-          {JSON.parse(localStorage.getItem("authUser")).username}
+          {localStorage.getItem("authUser") && JSON.parse(localStorage.getItem("authUser")).username}
         </span>
         <i
           className="bx bx-log-in text-white"
