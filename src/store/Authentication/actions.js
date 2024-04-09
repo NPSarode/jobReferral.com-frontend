@@ -21,8 +21,9 @@ export const loginFail = (err) => ({
 
 // LOGOUT
 
-export const logout = () => ({
+export const logout = (Navigate) => ({
     type: LOGOUT,
+    payload: Navigate
 })
 
 export const logoutSuccess = (data) => ({

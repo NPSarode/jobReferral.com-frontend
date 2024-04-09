@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import {
-  Button,
   Card,
   CardBody,
   CardTitle,
@@ -16,7 +15,6 @@ import emailIcon from "../../assets/icons/envelope-solid.svg";
 import Html from "../../assets/icons/html5Icon.svg";
 import Docker from "../../assets/icons/dockerIcon.svg";
 
-import KnobChart from "../../common/knob";
 import Divider from "../../common/Divider";
 
 const Profile = () => {
@@ -34,8 +32,8 @@ const Profile = () => {
               </Col>
             </Row>
             <Row>
-              <Col lg={12}>
-                <Card className="customCard">
+              <Col lg={12} className="leftProfile">
+                <Card className="bg-dark">
                   <img className="avatarImage" src={avatar} alt="Profile" />
                   <CardBody>
                     <h5 className="text-center">Nikhil Sarode</h5>
@@ -127,17 +125,17 @@ const Profile = () => {
             </Row>
           </Col>
 
-          {/* <Col lg={9} className="rigthProfile">
+          <Col lg={9} className="rigthProfile">
             <Card>
               <CardBody className="d-flex">
                 <div className="col-lg-9">
                   <div className="h1 mb-0">Profile</div>
                 </div>
-                <div className="d-flex justify-content-end mx-3 flex-wrap gap-2 col-lg-3">
+                {/* <div className="d-flex justify-content-end mx-3 flex-wrap gap-2 col-lg-3">
                   <Button className="btn btn-dark waves-effect waves-light bg-opacity-50">
                     Edit Profile
                   </Button>
-                </div>
+                </div> */}
               </CardBody>
               <CardBody>
                 <CardTitle className="d-flex justify-content-start align-items-center">
@@ -182,17 +180,10 @@ const Profile = () => {
                 <div className="aboutInfo">
                   <div className="col-lg-12">
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum que
-                      laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                      inventore veritatis et quasi architecto beatae vitae dicta
-                      su
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis architecto blanditiis obcaecati minima at
+                      expedita, rerum cupiditate ducimus repudiandae quaerat
+                      amet?
                     </p>
                   </div>
                 </div>
@@ -229,7 +220,7 @@ const Profile = () => {
                 </div>
               </CardBody>
             </Card>
-          </Col> */}
+          </Col>
         </Row>
       </Container>
     </React.Fragment>

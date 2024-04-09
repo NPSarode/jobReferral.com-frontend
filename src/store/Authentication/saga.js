@@ -19,18 +19,23 @@ function* loginUser({payload: { data, Navigate}}) {
   try {
     const response = yield call(login, data);
     if(response) {
-      localStorage.setItem('token', response)
+      console.log(response)
+      localStorage.setItem('token', response.token)
+      localStorage.setItem('authUser', JSON.stringify(response.data))
       Navigate("/")
+      yield put(loginSuccess(response));
     }
-    yield put(loginSuccess(response));
   } catch (error) {
     yield put(loginFail(error));
   }
 }
 
-function* logoutUser() {
+function* logoutUser({payload: Navigate}) {
   try {
     const response = yield call(logout);
+    localStorage.removeItem('token')
+    localStorage.removeItem('authUser')
+    Navigate("/")
     yield put(logoutSuccess(response));
   } catch (error) {
     yield put(logoutFail(error));

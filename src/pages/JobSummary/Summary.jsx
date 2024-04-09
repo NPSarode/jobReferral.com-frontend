@@ -34,11 +34,7 @@ const Summary = () => {
 
   const searchHandler = (item) => {
     setListItems(
-      details.filter((data) => {
-        if (data.name.toLowerCase().includes(item.toLowerCase())) {
-          return data;
-        }
-      })
+      details.filter((data) => data.name.toLowerCase().includes(item.toLowerCase()))
     );
   };
 
@@ -57,7 +53,6 @@ const Summary = () => {
     onSubmit: (values) => {
       dispatch(onAddJob(values));
       setModal(false);
-
       validation.resetForm();
     },
   });

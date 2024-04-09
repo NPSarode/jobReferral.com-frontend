@@ -6,7 +6,6 @@ import Profile from "../pages/Profile/Profile2";
 import Summary from "../pages/JobSummary/Summary";
 // import Users from "../pages/Configuration/Users/Users";
 import WorkInProgress from "../pages/WorkInProgress";
-
 // Public
 // import Login from "../pages/Authentication/Login";
 // import Register from "../pages/Authentication/Register";

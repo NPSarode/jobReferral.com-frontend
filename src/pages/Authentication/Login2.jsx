@@ -34,7 +34,7 @@ const Login2 = () => {
   });
 
   useEffect(() => {
-    if (data) {
+    if (data.id) {
       withReactContent(Swal).fire({
         title: <i>Login Successfull</i>,
         inputValue: "",

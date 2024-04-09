@@ -6,7 +6,7 @@ const AuthProtected = (props) => {
   if(localStorage.getItem("token")) {
     return (
       <>
-      <Navbar/>
+      <Navbar />
       <div>{props.children}</div>
       {/* <Footer title={"Nikhil sarode"} tech={"MERN"}/> */}
       </>

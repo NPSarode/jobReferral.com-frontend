@@ -4,7 +4,8 @@ export const LOGOUT = "/logout"
 export const REGISTER = "/register"
 
 // USERS
-export const USERS = "/users"
+export const GET_USERS = "/users"
+export const GET_USER_BY_ID = "/user"
 
 // COMPANY DETAILS
 export const JOB_SUMMARY = "/companydetails"

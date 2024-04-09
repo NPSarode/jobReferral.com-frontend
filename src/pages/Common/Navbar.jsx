@@ -1,93 +1,95 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import withReactContent from "sweetalert2-react-content";
-import Swal from "sweetalert2";
-import axios from "axios";
-
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/actions";
 
 export const Navbar = () => {
 
-  const Navigate = useNavigate()
+  const [isActive, setIsActive] = useState(false)
+  const dispatch = useDispatch();
+
+  const Navigate = useNavigate();
 
   const onClickLogOut = () => {
-    axios
-        .get(`${process.env.REACT_APP_API_ENDPOINT}/logout`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        })
-        .then((response) => response.data)
-        .catch((err) => {})
-        .then((data) => {
+    dispatch(logout(Navigate));
+  };
 
-          if( data.success ) {
-
-            localStorage.removeItem("token")
-
-            Navigate("/")
-
-            withReactContent(Swal).fire({
-              title: <i>Logout Successfull</i>,
-              inputValue:"",
-              icon:"success",
-              timer:2000,
-              heightAuto:false,
-              showConfirmButton:false,
-            })
-            
-          } else {
-
-            withReactContent(Swal).fire({
-              title: <i>{data.message}</i>,
-              inputValue:"",
-              icon:"error",
-              timer:3000,
-              heightAuto:false,
-              showConfirmButton:false,
-            })
-
-          }
-
-        });
-  }
-  
   return (
-    <div className="navbar shadow" style={{position:'sticky', top:'-10px',zIndex:'9'}}>
-      <div className="text-center">
-        <img src={logo} className="rounded" alt="..."  onClick={()=>{Navigate('/')}}/>
+    <div
+      className="navbar shadow"
+      style={{ position: "sticky", top: "-10px", zIndex: "9" }}
+    >
+      <div 
+          className="text-center col-md-1"
+          onClick={() => {
+            setIsActive(!isActive)
+          }}>
+        <img
+          src={logo}
+          className="rounded fluid-img"
+          alt="..."
+        />
       </div>
-      <ul className="text-white mb-0 parentUL text-dark">
-        {/* <Link to={'/'}>
-          <li>
-            Home
-          </li>
-        </Link>
-        <Link to={'/users'}>
-          <li>
-            Configuration
-          </li>
-        </Link>
-        <Link to={'/profile'}>
-          <li>
-            Profile
-          </li>
-        </Link>
-        <Link to={'/profile'}>
-          <li>
-            Chat
-          </li>
-        </Link> */}
-        <Link 
-        onClick={onClickLogOut} 
-        >
-          <i className='bx bx-log-in text-white' style={
-            {
-              fontSize:'200%',
-            }}></i>
-        </Link>
-      </ul>
+      <div className={`col-md-9 ListItems ${isActive ? "active" : ""}`}>
+        <ul className="text-white mb-0 parentUL text-dark">
+          
+          <Link
+            onClick={(e) => {
+              e.preventDefault();
+            setIsActive(!isActive)
+              Navigate("/");
+            }}
+          >
+            <li>Home</li>
+          </Link>
+          
+          <Link
+            onClick={(e) => {
+              e.preventDefault();
+              setIsActive(!isActive)
+              Navigate("/profile");
+            }}
+          >
+            <li>Profile</li>
+          </Link>
+          
+          <Link
+            onClick={(e) => {
+              e.preventDefault();
+            setIsActive(!isActive)
+            Navigate("/chats");
+            }}
+          >
+            <li>Chat</li>
+          </Link>
+          
+          {/* <Link
+          className="d-flex justify-content-start align-items-center flex-row "
+            onClick={(e) => {
+              e.preventDefault();
+            setIsActive(!isActive)
+            }}
+          >
+            <li>Configuration
+            <i class='bx bx-chevron-down text-white'></i>
+            </li>
+          </Link> */}
+        </ul>
+      </div>
+      <div className="col-md-2 LogoutButton">
+        <span className="text-white">
+          {JSON.parse(localStorage.getItem("authUser")).username}
+        </span>
+        <i
+          className="bx bx-log-in text-white"
+          style={{
+            fontSize: "200%",
+            cursor: "pointer",
+          }}
+          onClick={onClickLogOut}
+        ></i>
+      </div>
     </div>
   );
 };

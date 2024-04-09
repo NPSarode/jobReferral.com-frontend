@@ -12,7 +12,6 @@ axiosApi.defaults.headers.common["Authorization"] =
 
   export async function registerUser(url, data, config = {}) {
     return axiosApi.post(url, { ...data }, { ...config }).then((response) => {
-      console.log(response.data)
       if (response.data.success) {
         return response.data.message;
       }
@@ -31,8 +30,7 @@ axiosApi.defaults.headers.common["Authorization"] =
   export async function loginUser(url, data, config = {}) {
     return axiosApi.post(url, { ...data }, { ...config }).then((response) => {
       if (response.data.success) {
-        localStorage.setItem('token', response.data.data)
-        return response.data.data;
+        return response.data;
       }
   
       withReactContent(Swal).fire({

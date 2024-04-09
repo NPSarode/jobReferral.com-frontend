@@ -8,7 +8,7 @@ import {
 } from "./actionTypes";
 
 const INIT_STATE = {
-  data: "",
+  data: {},
   error: {}
 };
 
@@ -17,7 +17,7 @@ const authReducer = (state = INIT_STATE, action) => {
     case LOGIN_SUCCESS: {
       return {
         ...state,
-        data: action.payload
+        data: action.payload.data
       };
     }
 
@@ -43,7 +43,7 @@ const authReducer = (state = INIT_STATE, action) => {
     case LOGOUT_SUCCESS: {
       return {
         ...state,
-        data: action.payload
+        data: ""
       };
     }
 

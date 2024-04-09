@@ -3,7 +3,6 @@ import withReactContent from "sweetalert2-react-content";
 import Swal from 'sweetalert2'
 
 const SwalAlert = ({status, message}) => {
-  console.log(status, message)
   return withReactContent(Swal).fire({
     title: <i>{"message"}</i>,
     inputValue: "",
